@@ -22,8 +22,8 @@ class device_handler(debounce_handler):
 
 buttonpin = 23
 servopin = 18
-delay_period = 3
-servo_duration = 1.5
+delay_after = 1.5
+servo_duration = 3.0
 speed = 500
 off = 0
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
             if input_state == False:
               print('Dog was fed')
               rotate_once()
-              time.sleep(delay_period - servo_duration)
+              time.sleep(delay_after)
             time.sleep(0.1)
         except Exception, e:
             logging.critical("Critical exception: " + str(e))
