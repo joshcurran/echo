@@ -12,7 +12,7 @@ class device_handler(debounce_handler):
     """Publishes the on/off state requested,
        and the IP address of the Echo making the request.
     """
-    TRIGGERS = {"device": 52000}
+    TRIGGERS = {"Dog Feeder": 52000}
 
     def act(self, client_address, state):
         rotate_once();
