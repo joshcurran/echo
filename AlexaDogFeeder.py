@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-import wiringpi
+#import wiringpi
 import fauxmo
 import logging
 
@@ -28,21 +28,24 @@ speed = 500
 off = 0
 
 #Setup the servo in wiringpi
-wiringpi.wiringPiSetupGpio()
+'''wiringpi.wiringPiSetupGpio()
 wiringpi.pinMode(servopin, wiringpi.GPIO.PWM_OUTPUT)
 wiringpi.pwmSetMode(wiringpi.GPIO.PWM_MODE_MS)
 wiringpi.pwmSetClock(192)
 wiringpi.pwmSetRange(2000)
-
+'''
 #Setup the button in GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(buttonpin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(servopin, GPIO.OUT)
 
 #Rotate the servo
 def rotate_once():
-    wiringpi.pwmWrite(servopin, speed)
+    #wiringpi.pwmWrite(servopin, speed)
+    GPIO.output(servopin, TRUE)
     time.sleep(servo_duration)
-    wiringpi.pwmWrite(servopin, off)
+    #wiringpi.pwmWrite(servopin, off)
+    GPIO.output(servopin, FALSE)
 
 if __name__ == "__main__":
     # Startup the fauxmo server
